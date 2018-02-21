@@ -12,6 +12,24 @@ const url = require('url')
 let mainWindow
 
 function createWindow () {
+  const menu = electron.Menu.buildFromTemplate([
+    {
+      label: 'TestApp',
+      submenu: [
+        {
+          label: 'About TestApp',
+          click() {},
+        },
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click() { app.quit(); },
+        },
+      ]
+    }
+  ]);
+  electron.Menu.setApplicationMenu(menu);
+
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
@@ -21,6 +39,7 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+  mainWindow.webContents.openDevTools();
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -32,6 +51,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
 }
 
 // This method will be called when Electron has finished
