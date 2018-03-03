@@ -11,6 +11,13 @@
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
 
+    <div>
+      <button>click to select files/folders</button>
+    </div>
+    <div>
+      <input type="file" id="files" name="files[]" multiple />
+    </div>
+
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
